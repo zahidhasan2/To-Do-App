@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['https://to-do-app-p1pb.onrender.com','to-do-app-p1pb.onrender.com']
 
+CSRF_TRUSTED_ORIGINS=['https://to-do-app-p1pb.onrender.com','to-do-app-p1pb.onrender.com']
 
 # Application definition
 
