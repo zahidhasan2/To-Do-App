@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4 text-primary">{{task.title}}</h2>
+
+
+<!--task detail card-->
+<div class="card shadow-sm">
+    <div class="card-body">
+        <!--description--> 
+        <div class="mb-3">
+            <h5>Description</h5>
+            <p>{{task.description}}</p>
+        </div>
+
+        <!--status--> 
+        <div class="mb-3">
+            <h5>status</h5>
+            {% if task.is_completed %}
+            <span class="badge bg-success">Completed</span>
+
+            {% else %}
+            <span class="badge bg-success">Pending</span>
+
+            {% endif %}
+            <p>{{task.description}}</p>
+        </div>
+
+        <!--category--> 
+        <div class="mb-3">
+            <h5>Category</h5>
+            <span class="badge bg-success">{{task.get_category_display}}</span>
+            
+        </div>
+
+        <!--Due date--> 
+        <div class="mb-3">
+            <h5>Due Date</h5>
+            <p>{{task.due_date}}</p>
+        </div>
+
+        <!--Due Time--> 
+        <div class="mb-3">
+            <h5>Due Time</h5>
+            <p>{{task.due_time}}</p>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'task_list' %}" class="btn btn-secondary">Back to task list</a>
+            <a href="{% url 'task_delete' task_id=task.id%}" class="btn btn-danger">Delete task</a>
+            {% if not task.is_completed %}
+            <a href="{% url 'task_mark_completed' task_id=task.id %}" class="btn btn-success">Mark as a Completed</a>
+
+            {% endif %}
+            
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
